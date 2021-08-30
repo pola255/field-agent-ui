@@ -12,13 +12,13 @@ function AddAgentForm({ addAgent }) {
     return <form onSubmit={(event) => setInput(event)} className="row g-3 needs-validation" novalidate>
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="http://localhost:3000/">Add an agent</a>
+                <a class="nav-link active" aria-current="page" href="http://localhost:3000/">Agent</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="http://localhost:3000/">Add an alias</a>
+                <a class="nav-link" href="http://localhost:3000/">Alias</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="http://localhost:3000/">Add an agency</a>
+                <a class="nav-link" href="http://localhost:3000/">Agency</a>
             </li>
 
         </ul>
