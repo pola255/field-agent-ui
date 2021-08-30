@@ -5,7 +5,7 @@ import AddAgentForm from "./AgentForm"
 
 function AgentFetch() {
     const [agents, setAgents] = useState([]);
-   
+
 
     useEffect(() => {
         fetch("http://localhost:8080/api/agent")
@@ -35,7 +35,7 @@ function AgentFetch() {
                 if (response.status !== 201) {
                     return Promise.reject("response is not 200 Ok");
                 }
-                
+
                 return response.json();
             })
             .then(json => setAgents([...agents, json]))
@@ -76,7 +76,7 @@ function AgentFetch() {
                 if (response.status === 404) {
                     return Promise.reject("Agent not found")
                 } else if (response.status === 204) {
-                   setAgents(agents.map(a => (a.agentId === agent.agentId ? agent : a)))
+                    setAgents(agents.map(a => (a.agentId === agent.agentId ? agent : a)))
                 } else {
                     return Promise.reject(`Update failed with status: ${response.status}`);
                 }
@@ -87,21 +87,25 @@ function AgentFetch() {
 
     return (
 
-        <div>
+        <div className="container-sm">
 
             <h1>Field Agent</h1>
-            
-            <AddAgentForm addAgent={addAgent}/>
-            <table>
+
+            <AddAgentForm addAgent={addAgent} />
+            <table className="table table-striped">
                 <thead>
                     <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Height</th>
+
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Height</th>
+                        <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
+
                     {agents.map(a => <Agent agent={a} deleteById={deleteById} updateAgent={update} />)}
+
                 </tbody>
             </table>
         </div>

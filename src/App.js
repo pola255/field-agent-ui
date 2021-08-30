@@ -1,5 +1,3 @@
-// import logo from './logo.svg';
-import './App.css';
 import AgentFetch from './components/AgentFetch';
 
 function App() {
@@ -7,7 +5,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-          <AgentFetch/>
+          <AgentFetch />
         </p>
       </header>
     </div>
