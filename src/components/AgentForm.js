@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 
-function AddAgentForm({ addAgent }) {
+function AddAgentForm({ addAgent}) {
     const [inputState, setInputState] = useState({ firstName: "", lastName: "", heightInInches: "" })
     const setInput = (event) => {
         addAgent(inputState).then(() => {
@@ -10,7 +10,7 @@ function AddAgentForm({ addAgent }) {
         event.preventDefault()
     }
     return <form onSubmit={(event) => setInput(event)} className="row g-3 needs-validation" novalidate>
-        <ul class="nav nav-tabs">
+       {/*  <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="http://localhost:3000/">Agent</a>
             </li>
@@ -21,7 +21,7 @@ function AddAgentForm({ addAgent }) {
                 <a class="nav-link" href="http://localhost:3000/">Agency</a>
             </li>
 
-        </ul>
+        </ul> */}
 
         <div className="col-6">
 
