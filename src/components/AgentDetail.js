@@ -9,6 +9,8 @@ function AgentDetail() {
     const [agentDetails, setAgentDetails] = useState({});
     const { agentId } = useParams();
     const [alias, setAlias] = useState([]);
+    const [errorMessage, setErrorMessage] = useState(null);
+
     let history = useHistory();
 
     useEffect(() => {
@@ -41,12 +43,12 @@ function AgentDetail() {
         return fetch("http://localhost:8080/api/alias", init)
             .then(response => {
                 if (response.status !== 201) {
-                    return Promise.reject("response is not 200 OK")
+                    return response.json().then(errors => Promise.reject(errors[0]))
                 }
                 return response.json()
             })
             .then(json => setAlias([...alias, json]))
-            .catch(console.log)
+            .catch(setErrorMessage)
     }
 
     // Delete by Id
@@ -105,14 +107,15 @@ function AgentDetail() {
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>{agentDetails.firstName }</td>
-                    <td>{agentDetails.lastName}</td>
-                    <td>{agentDetails.heightInInches}</td>
+                    <tr>
+                        <td>{agentDetails.firstName}</td>
+                        <td>{agentDetails.lastName}</td>
+                        <td>{agentDetails.heightInInches}</td>
                     </tr>
 
                 </tbody>
             </table>
+            <h2>Alias</h2>
             <table className="table table-striped">
                 <thead>
                     <tr>
@@ -128,11 +131,17 @@ function AgentDetail() {
 
                 </tbody>
             </table>
+            <h2>Add Alias</h2>
+
+            {errorMessage && <div className="alert alert-danger" role="alert">
+                {errorMessage}
+            </div>}
+
             <AddAliasForm addAlias={addAlias} agentId={agentId} />
             <td><button onClick={history.goBack} className="btn btn-secondary">Back</button></td>
         </div>
 
-
+        
     );
 }
 

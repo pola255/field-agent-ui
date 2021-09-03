@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
-//import { useHistory } from 'react-router-dom'
+
 
 const Agent = ({ agent, deleteById, updateAgent }) => {
     const [editMode, setEditMode] = useState(false)
@@ -45,12 +45,13 @@ const Agent = ({ agent, deleteById, updateAgent }) => {
         <td>{agent.lastName}</td>
         <td>{agent.heightInInches}</td>
         {<td>
+
+
             <div className="btn-group" role="group" aria-label="Basic example">
                 <button onClick={() => deleteById(agent.agentId)} className="btn btn-danger">Delete</button>
                 <button onClick={() => setEditMode(true)} className="btn btn-primary">Edit</button>
 
-                <Link to={`/agent/${agent.agentId }`} className="btn btn-info">
-                 
+                <Link to={`/agent/${agent.agentId}`} className="btn btn-info">
                     Show
                 </Link>
             </div></td>}

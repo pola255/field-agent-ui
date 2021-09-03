@@ -35,7 +35,8 @@ const Alias = ({ alias, deleteById, updateAlias }) => {
                     setEditedAlias({ ...alias })
                 }} className="btn btn-secondary">Cancel</button>
                 <td><button onClick={() => update(editedAlias)} className="btn btn-primary">Update</button>
-                </td> </div>}
+                </td>
+            </div>}
 
         </tr>
 

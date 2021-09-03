@@ -30,9 +30,7 @@ function AddAliasForm({ addAlias, agentId }) {
             </div>
 
             <td><div>
-                {/* <button onClick={() => {
-                    setInputState({ name: "", persona: "", agentId: agentId})
-                }} className="btn btn-secondary">Cancel</button> */}
+               
                 <button type="submit" className="btn btn-primary"> Add Alias</button>
             </div></td>
 

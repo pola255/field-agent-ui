@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Agent from "./Agent";
-import AddAgentForm from "./AgentForm"
 
 
 function AgentFetch() {
@@ -19,29 +19,7 @@ function AgentFetch() {
             .catch(console.log);
     }, []);
 
-    // Add an agent
-    const addAgent = (inputState) => {
-
-        const init = {
-            method: "POST",
-            headers: {
-                "content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify(inputState)
-        };
-        return fetch("http://localhost:8080/api/agent", init)
-            .then(response => {
-                if (response.status !== 201) {
-                    return Promise.reject("response is not 200 Ok");
-                }
-
-                return response.json();
-            })
-            .then(json => setAgents([...agents, json]))
-            .catch(console.log);
-    }
-
+  
     // Delete by Id
 
     const deleteById = (id) => {
@@ -91,7 +69,11 @@ function AgentFetch() {
 
             <h1>Field Agent</h1>
 
-            <AddAgentForm addAgent={addAgent} />
+            <Link to={`/agent/add`} className="btn btn-success">
+                Add Agent
+            </Link>
+          
+
             <table className="table table-striped">
                 <thead>
                     <tr>
